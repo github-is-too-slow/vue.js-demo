@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>总价格：{{totalPrice}}</h2>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {id: 1000, name: "母猪的产后护理", price: 119},
+                    {id: 1001, name: "母猪的产后护理", price: 31},
+                    {id: 1002, name: "母猪的产后护理", price: 28},
+                    {id: 1003, name: "母猪的产后护理", price: 22},
+                ]
+            },
+            computed: {
+                totalPrice: function(){
+                    let result = 0;
+                    for(let book of this.books){
+                        result += book.price;
+                    }
+                    return result;
+                }
+            },
+            methods: {
+                
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <!-- step-03 使用组件my-cpn -->
+        <my-cpn></my-cpn>
+        <hr>
+        <my-cpn></my-cpn>
+        <hr>
+        <my-cpn></my-cpn>
+        <hr>
+    </div>
+    <div id="app2">
+        <my-cpn></my-cpn>
+    </div>
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        // step-01 创建组件构造器
+        let componentConstructor = Vue.extend({
+            template: `<div>
+                <h2>我是component标题</h2>
+                <p>我是component内容</p>
+                <p>哈哈哈哈哈哈哈哈哈</p>
+            </div>`
+        })
+
+        // step-02 注册组件
+        Vue.component("my-cpn", componentConstructor)
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            }
+        })
+
+        const app2 = new Vue({
+            el: '#app2'
+        })
+    </script>
+</body>
+</html>

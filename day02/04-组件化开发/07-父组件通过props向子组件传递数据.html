@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <cpn01 :cmovies="movies" :cmsg="msg"></cpn01>
+    </div>
+    
+    <template id="cpn01">
+        <div>
+            <ul>
+                <li v-for="item in cmovies">{{item}}</li>
+            </ul>
+            <p>{{cmsg}}</p>
+        </div>
+    </template>
+
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '你好啊',
+                movies: ['黑客帝国', '星际穿越', '盗梦空间', '大话西游']
+            },
+            components: {
+                //注册局部组件语法糖
+                cpn01: {
+                    template: `#cpn01`,
+                    props: {
+                        cmovies: Array,
+                        cmsg: {
+                            type: String,
+                            default: "哈哈哈哈哈",
+                            required: true
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

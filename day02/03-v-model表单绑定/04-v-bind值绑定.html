@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <label v-for="item in hobbies" :for="item">
+            <input type="checkbox" :id="item" :value="item" v-model="selectHobbies"/>
+            {{item}}
+        </label>
+        <h2>你选择的爱好是：{{selectHobbies}}</h2>
+    </div>
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                hobbies: ["篮球", "足球", "乒乓球", "羽毛球", "网球"],
+                selectHobbies: []
+            }
+        })
+    </script>
+</body>
+</html>

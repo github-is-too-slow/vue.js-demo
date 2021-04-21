@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <cpn></cpn>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <h2>我是子组件，哈哈哈哈哈</h2>
+            <ccpn></ccpn>
+        </div>
+    </template>
+
+    <template id="ccpn">
+        <div>
+            <h2>我是子子组件，嘻嘻嘻嘻嘻嘻</h2>
+            <button @click="btnclick">子访问父by $parent</button>
+            <button @click="btnclickroot">子访问根组件by $root</button>
+        </div>
+    </template>
+    
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '你好啊',
+                age: 0,
+                email: ''
+            },
+            methods: {
+            },
+            components: {
+                //注册局部组件语法糖
+                cpn: {
+                    template: `#cpn`,
+                    data(){
+                        return {msg: "我是子组件"}
+                    },
+                    methods: {
+                        showMsg(){
+                            console.log("showMsg");
+                        }
+                    },
+                    components: {
+                        ccpn: {
+                            template: '#ccpn',
+                            methods: {
+                                btnclick(){
+                                    console.log(this.$parent.msg)
+                                    console.log(this.$parent.showMsg())
+                                },
+                                btnclickroot(){
+                                    console.log(this.$root.msg)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

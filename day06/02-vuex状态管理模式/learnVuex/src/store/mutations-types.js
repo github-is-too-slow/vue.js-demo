@@ -1,0 +1,7 @@
+export const INCREMENT = 'increment'
+export const DECREMENT = 'decrement'
+export const ADDSTU = 'addStu'
+export const ADDONE = 'addOne'
+export const ADDATTR = 'addAttr'
+export const DELETEATTR = 'deleteAttr'
+export const UPDATENAME = 'updateName'

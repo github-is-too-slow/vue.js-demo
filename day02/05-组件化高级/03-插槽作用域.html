@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <hr>
+        <cpn>
+            <template slot-scope="yyy">
+                <h3>{{yyy.xxx.join(' - ')}}</h3>
+            </template>
+        </cpn>
+        <hr>
+        <cpn>
+            <template slot-scope="zzz">
+                <h3>{{zzz.xxx.join(" * ")}}</h3>
+            </template>
+        </cpn>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <slot :xxx="movies">
+                <ul>
+                    <li v-for="item in movies">{{item}}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data(){
+                        return {
+                            movies: ['黑客帝国', '星际穿越', '盗梦空间', '大话西游']
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <hr>
+        <cpn><span>我是一个span，不是一个按钮</span></cpn>
+        <hr>
+        <cpn><a href="http://www.baidu.com">我是一个超链接，点我一下？</a></cpn>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <h2>我是标题</h2>
+            <p>我是一个段落</p>
+            <slot><button>我是按钮啊</button></slot>
+        </div>
+    </template>
+
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            },
+            components: {
+                cpn: {
+                    template: '#cpn'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

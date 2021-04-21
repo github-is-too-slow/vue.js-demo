@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <cpn></cpn>
+        <hr>
+        <cpn></cpn>
+        <hr>
+        <cpn ref="third"></cpn>
+        <button @click="btnclick1">父访问子by $children</button>
+        <button @click="btnclick2">父访问子by $refs</button>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <h2>我是子组件，哈哈哈哈哈</h2>
+        </div>
+    </template>
+    
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            },
+            methods: {
+                btnclick1(){
+                    console.log(this.$children[1].name)
+                    this.$children[2].showMsg()
+                },
+                btnclick2(){
+                    console.log(this.$refs.third.name)
+                    this.$refs.third.showMsg()
+                }
+            },
+            components: {
+                //注册局部组件语法糖
+                cpn: {
+                    template: `#cpn`,
+                    data(){
+                        return {name: "我是子组件"}
+                    },
+                    methods: {
+                        showMsg(){
+                            console.log("showMsg");
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

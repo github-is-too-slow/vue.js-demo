@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <cpn01 :cage="age" :cage2="age2"
+                @cinput="finput" @cinput2="finput2"></cpn01>
+    </div>
+    
+    <template id="cpn01">
+        <div>
+            <label>props:  {{cage}}</label><br/>
+            <label>data:  {{dage}}</label><br/>
+            <!-- <input type="text" v-model.number="dage"/> -->
+            <input type="text" :value="dage" @input="input">
+            <hr/>
+            <label>props:  {{cage2}}</label><br/>
+            <label>data:  {{dage2}}</label><br/>
+            <!-- <input type="text" v-model="dage2"/> -->
+            <input type="text" :value="dage2" @input="input2">
+        </div>
+    </template>
+
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                age: 0,
+                age2: 0
+            },
+            components: {
+                //注册局部组件语法糖
+                cpn01: {
+                    template: `#cpn01`,
+                    data(){
+                        return {
+                            dage: this.cage,
+                            dage2: this.cage2
+                        }
+                    },
+                    props: {
+                        cage: Number,
+                        cage2: Number
+                    },
+                    methods: {
+                        input(event){
+                            this.dage = event.target.value;
+                            this.$emit("cinput", this.dage);
+                            this.dage2 = this.dage * 100;
+                            this.$emit("cinput2", this.dage2);
+                        },
+                        input2(event){
+                            this.dage2 = event.target.value;
+                            this.$emit("cinput2", this.dage2);
+                            this.dage = this.dage2 / 100;
+                            this.$emit("cinput", this.dage);
+                        }
+                    }
+                }
+            },
+            methods: {
+                finput(value){
+                    this.age = parseFloat(value)
+                },
+                finput2(value){
+                    this.age2 = parseFloat(value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

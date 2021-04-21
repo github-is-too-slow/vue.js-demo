@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span class="default" v-bind:class="{'color': isColor, 'line': isLine}">我是span</span><br/>
+        <span class="default" v-bind:class="getClasses()">我是span</span><br/>
+        <button v-on:click="toggle">toggle颜色</button>
+    </div>
+    <script src='../lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isColor: true,
+                isLine: true
+            },
+            methods: {
+                toggle: function(){
+                    this.isColor = !this.isColor;
+                },
+                getClasses: function(){
+                    return {'color': this.isColor, 'line': this.isLine};
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>

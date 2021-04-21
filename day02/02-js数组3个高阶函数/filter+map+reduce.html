@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{totalPrice2}}</h1>
+    </div>
+
+    <script src="../../day01/lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                prices: [100, 200, 300, 40, 60, 80, 150]
+            },
+            methods: {
+                
+            },
+            computed: {
+                totalPrice(){
+                    return this.prices.filter(function(price){
+                        return price > 100
+                    }).map(function(price){
+                        return price * 2
+                    }).reduce(function(preValue, price){
+                        return preValue + price
+                    }, 0)
+                },
+                totalPrice2(){
+                    // 箭头函数
+                    return this.prices.filter(n => n > 100).map(n => n * 2).reduce((pre, n) => pre + n, 0);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

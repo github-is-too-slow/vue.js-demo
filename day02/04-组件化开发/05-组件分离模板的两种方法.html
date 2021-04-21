@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <my-cpn01></my-cpn01>
+        <cpn02></cpn02>
+    </div>
+    
+    <!-- 分离模板方式1 -->
+    <!-- <scritp type="text/x-template" id="cpn01">
+        <div>
+            <h2>我是component标题1</h2>
+            <p>我是component内容1</p>
+            <p>哈哈哈哈哈哈哈哈哈</p>
+        </div>
+    </scritp> -->
+
+    <template id="cpn01">
+        <div>
+            <h2>我是component标题1</h2>
+            <p>我是component内容1</p>
+            <p>哈哈哈哈哈哈哈哈哈</p>
+        </div>
+    </template>
+    <!-- 分离模板方式2 -->
+    <template id="cpn02">
+        <div>
+            <my-cpn01></my-cpn01>
+            <h2>我是component标题2</h2>
+            <p>我是component内容2</p>
+            <p>呵呵呵呵呵呵呵呵</p>
+            <my-cpn01></my-cpn01>
+        </div>
+    </template>
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        //注册全局组件语法糖
+        Vue.component("my-cpn01", {
+            template: '#cpn01'
+        })
+        
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            },
+            components: {
+                //注册局部组件语法糖
+                cpn02: {
+                    template: `#cpn02`
+                }
+            }
+        })
+    </script>
+</body>
+</html>

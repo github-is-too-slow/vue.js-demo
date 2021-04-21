@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        姓名：<input type="text" v-model.lazy="msg"/>
+        <h2>{{msg}}</h2>
+        年龄：<input type="number" v-model.lazy.number="age"/>
+        <h2>{{age}}</h2><h2>{{typeof age}}</h2>
+        邮箱：<input type="text" v-model.trim="email"/>
+        <h2>{{email}}</h2>
+    </div>
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                age: 0,
+                email: ''
+            }
+        })
+    </script>
+</body>
+</html>

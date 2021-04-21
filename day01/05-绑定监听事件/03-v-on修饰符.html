@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div @click="divclk">
+            <button @click.stop="clk1">按钮1</button>
+        </div>
+        <form>
+            <input type="submit" value="提交" @click.prevent="clk2">
+        </form>
+        <input @click.enter="clk3" type="text"/><br/>
+        <input @click.13="clk3" type="text"/><br/>
+        <button @click.once="clk3">按钮123</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+                divclk(){
+                    console.log("divclk.....");
+                },
+                clk1(){
+                    console.log("clk111111");
+                },
+                clk2(){
+                    console.log("clk222222");
+                },
+                clk3(){
+                    console.log("clk333333");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

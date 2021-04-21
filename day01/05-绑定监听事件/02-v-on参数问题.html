@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 无参数 -->
+        <button v-on:click="btn1">button1</button><br/>
+        <!-- 有一个参数，默认传入event事件对象 -->
+        <button v-on:click="btn2">button2</button><br/>
+        <!-- 有一个参数，手动传入参数 -->
+        <button v-on:click="btn2('abc')">button3</button><br/>
+        <!-- 有两个参数，通过$event获取事件对象 -->
+        <button v-on:click="btn3('abc', $event)">button4</button><br/>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+                btn1(){
+                    console.log("---");
+                },
+                btn2(variable){
+                    console.log("---", variable);
+                },
+                btn3(variable, event){
+                    console.log("---", variable, event);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

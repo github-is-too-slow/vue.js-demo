@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("第一次网络请求成功")
+        //         resolve("first")
+        //     }, 1000);
+        // }).then(data => {
+        //     console.log(data + "处理")
+        //     // 链式调用2
+        //     return Promise.resolve("first02")
+        // }).then(data => {
+        //     console.log(data + "处理")
+        // })
+
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("第二次网络请求成功")
+        //         // 链式调用3
+        //         resolve("second")
+        //     }, 1000);
+        // }).then(data => {
+        //     console.log(data + "处理异常")
+        //     return "second02"
+        // }).then(data => {
+        //     console.log(data + "处理异常")
+        // })
+
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("第三次网络请求失败")
+        //         reject("third")
+        //     }, 1000);
+        // }).catch(data => {
+        //     console.log(data + "处理")
+        //     // 链式调用2
+        //     return Promise.reject("second02")
+        // }).catch(data => {
+        //     console.log(data + "处理")
+        // })
+
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("第四次网络请求失败")
+                // 链式调用3
+                reject('four')
+            }, 1000);
+        }).catch(data => {
+            console.log(data + "处理异常")
+            throw "four02"
+        }).catch(data => {
+            console.log(data + "处理异常")
+        })
+    </script>
+</body>
+</html>

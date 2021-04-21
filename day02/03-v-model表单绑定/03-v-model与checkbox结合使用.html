@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <input type="checkbox" id="agreement" v-model="isAgree"/>
+        <label for="agreement">同意协议</label>
+        <br>
+        <button :disabled="!isAgree">下一步</button>
+        <hr/>
+        <input type="checkbox" value="篮球" v-model="hobbies"/>篮球
+        <input type="checkbox" value="足球" v-model="hobbies"/>足球
+        <input type="checkbox" value="乒乓球" v-model="hobbies"/>乒乓球
+        <input type="checkbox" value="羽毛球" v-model="hobbies"/>羽毛球
+        <input type="checkbox" value="网球" v-model="hobbies"/>网球
+        <h2>你选择的爱好是：{{hobbies}}</h2>
+    </div>
+    <script src='../../day01/lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isAgree: false,
+                hobbies: []
+            }
+        })
+    </script>
+</body>
+</html>

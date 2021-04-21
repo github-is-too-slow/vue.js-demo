@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span :style="{color: finalColor, fontSize: finalSize + 'px'}">我是span</span>
+        <br/>
+        <span :style="getStyles()">我是span</span>
+    </div>
+    <script src='../lib/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                finalColor: 'red',
+                finalSize: 50
+            },
+            methods: {
+                getStyles: function(){
+                    return {color: this.finalColor, fontSize: this.finalSize + 'px'};
+                }
+            }
+        });
+    </script>
+</body>
+</html>
